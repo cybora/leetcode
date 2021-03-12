@@ -1,7 +1,6 @@
 
     public boolean hasAllCodes(String s, int k) {
         boolean[] binaries = new boolean[1 << k];
-        Arrays.fill(binaries, false);
         int count = 0;
 
         for (int i = 0; i <= s.length() - k; i++) {
