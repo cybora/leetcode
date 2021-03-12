@@ -8,5 +8,5 @@
                 return true;
         }
 
-        return binaries.size() == total;
+        return false;
     }
