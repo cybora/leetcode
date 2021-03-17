@@ -3,17 +3,13 @@ class Solution {
     private final double radius;
     private final double x_center;
     private final double y_center;
-    private final Set<Double> xSet;
-    private final Set<Double> ySet;
 
     public Solution(double radius, double x_center, double y_center) {
         this.radius = radius;
         this.x_center = x_center;
         this.y_center = y_center;
-        xSet = new HashSet<>();
-        ySet = new HashSet<>();
     }
-    
+
     public double[] randPoint() {
         double topY = y_center + radius;
         double bottomY = y_center - radius;
@@ -27,7 +23,7 @@ class Solution {
 
         while (notValid) {
             int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-            double distance = 0.0d;
+            double distance;
             if (randomNum == 1) {
                 randX = x_center + Math.random() * (rightX - x_center);
                 randY = y_center + Math.random() * (topY - y_center);
@@ -45,10 +41,8 @@ class Solution {
                 randY = y_center + Math.random() * (topY - y_center);
                 distance = Math.sqrt(Math.pow(randX - x_center, 2.0d) + Math.pow(randY - y_center, 2.0d));
             }
-            if (distance <= radius && !xSet.contains(randX) && !ySet.contains(randY)) {
+            if (distance <= radius) {
                 notValid = false;
-                xSet.add(randX);
-                ySet.add(randY);
             }
         }
 
